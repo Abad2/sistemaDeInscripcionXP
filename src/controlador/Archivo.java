@@ -32,9 +32,5 @@ public class Archivo {
 		return fechaCreacion;
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 }
