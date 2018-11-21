@@ -54,9 +54,11 @@ public class PanelListas {
 		tablaModel.addColumn("DIRECCION");
 		tablaModel.addColumn("E-MAIL");
 		tablaModel.addColumn("TELEFONO");
+		
 
 		tabla.setModel(tablaModel);
-
+		tabla.getColumnModel().getColumn(0).setPreferredWidth(dimPan.PenX(0.5F));
+		
 		while (rs.next()) { // Mejorar ojo
 			filas[0] = (rs.getString(1));
 			filas[1] = (rs.getString(2));
@@ -83,6 +85,8 @@ public class PanelListas {
 		
 		panel.add(panelEncabezado, BorderLayout.NORTH);
 		labelTituloItem.setText(titulo);
+		
+		panel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(155, 191, 42)));
 		return panel;
 	}
 	
@@ -98,6 +102,7 @@ public class PanelListas {
 		tablaModel.addColumn("CURSO");
 
 		tabla.setModel(tablaModel);
+		tabla.getColumnModel().getColumn(0).setPreferredWidth(dimPan.PenX(0.5F));
 
 		while (rs.next()) { // Mejorar ojo
 			filas[0] = (rs.getString(1));
@@ -110,7 +115,7 @@ public class PanelListas {
 			filas[7] = (rs.getString(8));
 			tablaModel.addRow(filas);
 		}
-		//tabla.setEnabled(false);
+
 		scroll.setViewportView(tabla);
 
 		JPanel panel = new JPanel();
@@ -125,6 +130,8 @@ public class PanelListas {
 		
 		panel.add(panelEncabezado, BorderLayout.NORTH);
 		labelTituloItem.setText(titulo);
+		
+		panel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new Color(155, 191, 42)));
 		return panel;
 		
 	}

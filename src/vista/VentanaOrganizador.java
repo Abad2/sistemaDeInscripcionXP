@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.*;
@@ -25,12 +26,13 @@ public final class VentanaOrganizador extends VentanaUsuario implements ActionLi
 	private byte segundos;
 	private Thread hilo1;
 	private JButton btnVerExpositores, btnArchivo;
-	private PanelArchivo panelarchivo;
+	private PanelArchivo panelArchivo;
 	
 	public VentanaOrganizador(String nombreVentana, String titulo, String archivoIcono){
 		
 		super(nombreVentana, titulo, archivoIcono);
-		panelarchivo = new PanelArchivo();
+		
+		panelArchivo = new PanelArchivo("ARCHIVO");
 		
 		con = new ConeccionBDPostgres();
 		
@@ -56,7 +58,6 @@ public final class VentanaOrganizador extends VentanaUsuario implements ActionLi
 		itemCerrarSesion.addActionListener(this);
 		itemAcerca.addActionListener(this);
 		
-		panel22.setVisible(false);
 		
 		btnRegistrar.setText("NUEVO EXPOSITOR");
 		
@@ -72,9 +73,12 @@ public final class VentanaOrganizador extends VentanaUsuario implements ActionLi
 		panel12.add(new JLabel(" "));
 		panel12.add(new JLabel(" "));
 		
-		
+		//panel2.setBackground(Color.red);
 		hilo1 = new Thread(this);
         hilo1.start();
+        
+        panel22.setVisible(false);
+        panelArchivo.setVisible(false);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -97,7 +101,30 @@ public final class VentanaOrganizador extends VentanaUsuario implements ActionLi
 				}else if(e.getSource()==itemAcerca){
 					mostrarAutores();
 				}else if(e.getSource() == btnVerExpositores){
-						panel22.setVisible(true);
+						if(btnVerExpositores.getText().equals("VER EXPOSITORES")){
+							panel2.add(panel22);
+							panel22.setVisible(true);
+							panel2.repaint();
+							btnVerExpositores.setText("NO VER EXPOSITORES");
+						}else{
+							panel2.remove(panel22);
+							panel22.setVisible(false);
+							panel2.repaint();
+							btnVerExpositores.setText("VER EXPOSITORES");
+						}
+				}else if(e.getSource()==btnArchivo){
+					if(btnArchivo.getText().equals("ARCHIVO")){
+						panel2.add(panelArchivo);
+						panelArchivo.setVisible(true);
+						panel2.repaint();
+						btnArchivo.setText("NO VER ARCHIVO");
+					}else{
+						panel2.remove(panelArchivo);
+						panelArchivo.setVisible(false);
+						panel2.repaint();
+						btnArchivo.setText("ARCHIVO");
+						
+					}
 				}
 	}
 	
@@ -133,7 +160,6 @@ public final class VentanaOrganizador extends VentanaUsuario implements ActionLi
 										"apellidomatconfe", "especialidadconf", "dirconfe",
 										"email", "telfconfe"}));
 				 }
-				 
 				 segundos = 0;
 			 }
 			segundos ++;

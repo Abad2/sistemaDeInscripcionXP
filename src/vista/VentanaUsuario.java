@@ -83,7 +83,7 @@ public class VentanaUsuario extends JFrame{
 		panelFondo.add(panel1, BorderLayout.NORTH);
 		panelFondo.add(panel2, BorderLayout.CENTER);
 		panelFondo.add(panel3, BorderLayout.SOUTH);
-		panel2.setLayout(new GridLayout(1,2));
+		panel2.setLayout(new GridLayout(1,10));//1,2
 		
 		panel11 = new JPanel();
 		panel12 = new JPanel();
@@ -95,13 +95,11 @@ public class VentanaUsuario extends JFrame{
 		
 		panel1.add(panel11);
 		panel1.add(panel12);
-		panel2.add(panel21, BorderLayout.WEST);
-		panel2.add(panel22, BorderLayout.EAST);
+		panel2.add(panel21);//(panel21, BorderLayout.WEST);
+		//panel2.add(panel22);//(panel22, BorderLayout.EAST);
 		panel3.setLayout(new GridLayout(3, 1));
 		panel11.setLayout(new GridLayout(1, 2));
-		
-		//panel12.add(new JLabel(""));
-		//panel12.add(new JLabel(""));
+
 		
 		labelPiePagina = new JLabel("© Sistemas de información II - 2018");
 		labelPiePagina.setForeground(new Color(138,145,141));
@@ -109,7 +107,6 @@ public class VentanaUsuario extends JFrame{
 		labelPiePagina.setHorizontalAlignment(SwingConstants.CENTER);
 		panel3.add(new JLabel(" "));
 		panel3.add(labelPiePagina);
-		//panel3.add(new JLabel(" "));
 		scrollVentana.setViewportView(panelFondo);
 		
 		labelTitulo = new JLabel(titulo);
