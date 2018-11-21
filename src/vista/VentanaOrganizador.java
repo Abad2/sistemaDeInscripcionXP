@@ -47,7 +47,6 @@ public final class VentanaOrganizador extends VentanaUsuario implements ActionLi
 		btnVerExpositores.addActionListener(this);
 		btnArchivo.addActionListener(this);
 		
-		
 		img = new LabelImagen(50, 50);
 		panel21.add(img.labelImagen("fotoConferencia.png"));
 		img.setX(15);
@@ -78,6 +77,7 @@ public final class VentanaOrganizador extends VentanaUsuario implements ActionLi
         hilo1.start();
         
         panel22.setVisible(false);
+        panelArchivo.setBackground(Color.cyan);
         panelArchivo.setVisible(false);
 	}
 	@Override

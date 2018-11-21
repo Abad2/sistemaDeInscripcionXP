@@ -6,6 +6,7 @@ public class Archivo {
 	public Archivo(){
 		
 		
+		
 	}
 	
 	public String getIdArch() {
@@ -32,5 +33,4 @@ public class Archivo {
 		return fechaCreacion;
 	}
 
-	
 }
